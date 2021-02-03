@@ -242,9 +242,6 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reG-F0-byd">
                                         <rect key="frame" x="0.0" y="0.0" width="330" height="88"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="330" id="8Q7-IO-dtL"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Join Group"/>
                                         <connections>
@@ -323,13 +320,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Create group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrz-or-fkB">
-                                <rect key="frame" x="157" y="219.5" width="100" height="20.5"/>
+                                <rect key="frame" x="157" y="276.5" width="100" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="g5N-Yx-ORC">
-                                <rect key="frame" x="152" y="457" width="110" height="64"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIT-45-OF7">
+                                <rect key="frame" x="185" y="528" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemPinkColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="g5N-Yx-ORC">
+                                <rect key="frame" x="152" y="436" width="110" height="84"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter group name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NP4-IR-sGo">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="34"/>
@@ -337,29 +340,26 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHA-aa-H5f">
-                                        <rect key="frame" x="0.0" y="34" width="110" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="54" width="110" height="30"/>
+                                        <state key="normal" title="Create Group"/>
                                         <connections>
                                             <action selector="EnterGroupNameBTNTapped:" destination="Y9c-6p-vgX" eventType="touchUpInside" id="0Mk-K5-icd"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIT-45-OF7">
-                                <rect key="frame" x="186" y="548" width="42" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="systemPinkColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5Ke-Iq-Dy8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="WIT-45-OF7" firstAttribute="top" secondItem="g5N-Yx-ORC" secondAttribute="bottom" constant="7" id="77t-f5-vbn"/>
                             <constraint firstItem="5Ke-Iq-Dy8" firstAttribute="trailing" secondItem="g5N-Yx-ORC" secondAttribute="trailing" constant="152" id="Jno-qn-5TP"/>
                             <constraint firstItem="g5N-Yx-ORC" firstAttribute="top" secondItem="yrz-or-fkB" secondAttribute="bottom" constant="217" id="L3t-4P-XCI"/>
                             <constraint firstItem="5Ke-Iq-Dy8" firstAttribute="bottom" secondItem="g5N-Yx-ORC" secondAttribute="bottom" constant="287" id="Vgl-LD-qW4"/>
                             <constraint firstItem="g5N-Yx-ORC" firstAttribute="leading" secondItem="5Ke-Iq-Dy8" secondAttribute="leading" constant="152" id="Vzg-Iv-Qod"/>
+                            <constraint firstItem="g5N-Yx-ORC" firstAttribute="top" secondItem="yrz-or-fkB" secondAttribute="bottom" constant="140" id="tEl-Vc-nbX"/>
+                            <constraint firstItem="5Ke-Iq-Dy8" firstAttribute="trailing" secondItem="g5N-Yx-ORC" secondAttribute="trailing" constant="152" id="tsl-7y-YW8"/>
+                            <constraint firstItem="g5N-Yx-ORC" firstAttribute="leading" secondItem="5Ke-Iq-Dy8" secondAttribute="leading" constant="152" id="zFd-43-ncI"/>
                         </constraints>
                     </view>
                     <connections>
@@ -381,16 +381,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JoinGroup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2T-K6-4OV">
-                                <rect key="frame" x="186" y="382" width="79" height="21"/>
+                                <rect key="frame" x="168" y="229" width="79" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zsX-uR-muc">
+                                <rect key="frame" x="137" y="389" width="140" height="84"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter group code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HPj-jx-dXt">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmL-Vw-6h2">
+                                        <rect key="frame" x="0.0" y="54" width="140" height="30"/>
+                                        <state key="normal" title="Join Group"/>
+                                        <connections>
+                                            <action selector="JoinGroupBTNTapped:" destination="6sn-qz-GjK" eventType="touchUpInside" id="3cf-Lb-Il1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpy-r8-adp">
+                                <rect key="frame" x="186" y="481" width="38" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemPinkColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gUw-z8-4NH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="ErrorLabel" destination="qpy-r8-adp" id="Fi7-q1-x0X"/>
+                        <outlet property="GroupCodeTextField2" destination="HPj-jx-dXt" id="UCP-Hz-CGZ"/>
+                        <outlet property="JoinGroupBTN" destination="vmL-Vw-6h2" id="w0O-li-ohJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGH-kZ-Os4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -30,15 +30,6 @@ class CreateGroupViewController: UIViewController {
 
     @IBAction func EnterGroupNameBTNTapped(_ sender: Any) {
         
-        //let user = Auth.auth().currentUser
-        //let uid = user.uid
-        /*
-        if let user = user {
-            let uid = result!.user.uid
-        }
-        */
-        
-        
         //validate fields
         let error = validateFields()
         if error != nil {
@@ -73,15 +64,7 @@ class CreateGroupViewController: UIViewController {
                 "groupname":groupname,
             
             ])
-            
-            //make sure newgroup is created
-            
-            //remove /usergroups/
-            
-            
-            //var editedgroup = newgroup
         
-            
             
             //add groupid to user database as well
             let currentuid2 = (Auth.auth().currentUser?.uid)!
@@ -95,11 +78,9 @@ class CreateGroupViewController: UIViewController {
                     print("Document succesfully updated")
                 }
             }
-            
-            self.moveToHomeScreen()
-            
             //move to home screen
-            
+            self.moveToHomeScreen()
+ 
         }
         
     }
@@ -133,16 +114,5 @@ class CreateGroupViewController: UIViewController {
         self.view.window?.rootViewController = homeViewController
         self.view.window?.makeKeyAndVisible()
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
