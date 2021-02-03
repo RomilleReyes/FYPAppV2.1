@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import FirebaseFirestore
 
 class LogInViewController: UIViewController {
     
@@ -63,11 +65,112 @@ class LogInViewController: UIViewController {
             }
             else {
                 
-                let homeViewController =
-                    self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+                // if usee does not have a group then let them create / join group
+                //else join home view
                 
-                self.view.window?.rootViewController = homeViewController
-                self.view.window?.makeKeyAndVisible()
+                //need unique ID of user signing in and then check on that
+                //self.ref.child("users/")
+                
+                //let grpID = db.collection("users2")
+                
+                let db = Firestore.firestore()
+                var grpid = ""
+            
+                let user = Auth.auth().currentUser
+                
+                /*
+                self.db.collection("users2").whereField("uid", isEqualTo: "\(uid)").getDocuments { (snapshot,err) in
+                    
+                    if let err = err {
+                            print("Error getting documents: ")
+                        }
+                    else {
+                            for document in snapshot!.documents {
+                                if document == document {
+                                    print("SUCCESS")
+                                }
+                            }
+                        }
+ 
+                    */
+                
+                
+                if let user = user {
+                    let uid = result!.user.uid
+                    //let grpBel = user.groupbelong
+                    
+                    let docRef = db.collection("users2").document(user.uid)
+                    docRef.getDocument {   (document,error) in
+                        if let document = document, document.exists {
+                            grpid = document.get("groupbelong") as! String
+                            print("groupid updated")
+                            print(grpid)
+                            
+                            if grpid == "nogroup" {
+                                //if user has not created / joined group then
+                                //user brought to the group page
+                                self.moveToGroupPage()
+                            }
+                            else {
+                                //if user has a group then moves to homescreen straight
+                                self.moveToHomeScreen()
+
+                            }
+                        }
+                        else {
+                            //print error
+                            print("did not update grpid")
+                        }
+                    }
+                    
+                    
+                    /*
+                    
+                    if uid != "" {
+        
+                        print(uid)
+                        // change TESTDOC
+                        
+                        //
+                        
+                        let docRef = db.collection("users2").document(user.uid)
+                        docRef.getDocument {   (document,error) in
+                            if let document = document, document.exists {
+                                grpid = document.get("groupbelong") as! String
+                                print("groupid updated")
+                                print(grpid)
+                                
+                                if grpid == "nogroup" {
+                                    //if user has not created / joined group then
+                                    //user brought to the group page
+                                    self.moveToGroupPage()
+                                }
+                                else {
+                                    //if user has a group then moves to homescreen straight
+                                    self.moveToHomeScreen()
+
+                                }
+                            }
+                            else {
+                                //print error
+                                print("did not update grpid")
+                            }
+                        }
+                        
+                        
+                        
+                        //print(grpid + "here now")
+                        print(result!.user.uid)
+                        print("ERROR")
+                        
+                    }
+                ///
+                    
+                    */
+                    
+                    
+                }
+                
                 
             }
         }
@@ -75,7 +178,24 @@ class LogInViewController: UIViewController {
         
     }
     
+    
+    func moveToHomeScreen(){
+        let homeViewController =
+            self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        
+        self.view.window?.rootViewController = homeViewController
+        self.view.window?.makeKeyAndVisible()
+    }
+    func moveToGroupPage(){
+        let groupViewController =
+            self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.groupViewController) as? GroupViewController
+        
+        self.view.window?.rootViewController = groupViewController
+        self.view.window?.makeKeyAndVisible()
+    }
+    
 
     
 
 }
+

@@ -89,6 +89,8 @@ class SignUpViewController: UIViewController {
             let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            //let groupBelong = "nogroup"
                 
         
         // create user
@@ -102,23 +104,25 @@ class SignUpViewController: UIViewController {
                 }
                 else {
                     
-                    // user created succesfully
-                    //store first name and last name
-                    
-                    //return
                     let db = Firestore.firestore()
-                    
-                    db.collection("users2").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid]) { (error) in
-                        
-                        if error != nil {
-                            //show error message
-                            self.showError("User data could not be saved on database")
+
+                    db.collection("users2").document(result!.user.uid).setData([
+                        "firstname":firstName,
+                        "lastname":lastName,
+                        "email":email,
+                        "uid":result!.user.uid,
+                        "groupbelong":"nogroup",
+                    ])
+                    { err in
+                        if let err = err {
+                            print("error")
+                        }
+                        else {
+                            print("error2")
                         }
                     }
                     
-                    // transition to home screen
-                    
-                    self.transitionToHome()
+                    self.moveToGroupPage()
                     
                    
                 }
@@ -128,6 +132,8 @@ class SignUpViewController: UIViewController {
         
     }
     
+    
+    
     func transitionToHome(){
         self.showError("movingtoHomenow")
         let homeViewController =
@@ -135,6 +141,12 @@ class SignUpViewController: UIViewController {
         
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
+    }
+    
+    func moveToGroupPage(){
+        let groupViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.groupViewController) as? GroupViewController
+        self.view.window?.rootViewController = groupViewController
+        self.view.window?.makeKeyAndVisible()
     }
     
     func showError(_ message:String){
