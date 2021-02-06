@@ -99,10 +99,13 @@ class JoinGroupViewController: UIViewController {
             )
             
             
+            //move to home screen
+            self.moveToHomeScreen()
+            // only moves if all fields are filled
+            
         }
         
-        //move to home screen
-        self.moveToHomeScreen()
+        
         
         }
     

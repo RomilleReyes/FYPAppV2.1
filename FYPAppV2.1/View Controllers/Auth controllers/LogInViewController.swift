@@ -34,7 +34,7 @@ class LogInViewController: UIViewController {
         //style the elements
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)
-        Utilities.styleFilledButton(logInButton)
+        Utilities.styleHollowButton(logInButton)
     }
 
     
@@ -71,28 +71,12 @@ class LogInViewController: UIViewController {
                 //need unique ID of user signing in and then check on that
                 //self.ref.child("users/")
                 
-                //let grpID = db.collection("users2")
+               
                 
                 let db = Firestore.firestore()
                 var grpid = ""
             
                 let user = Auth.auth().currentUser
-                
-                /*
-                self.db.collection("users2").whereField("uid", isEqualTo: "\(uid)").getDocuments { (snapshot,err) in
-                    
-                    if let err = err {
-                            print("Error getting documents: ")
-                        }
-                    else {
-                            for document in snapshot!.documents {
-                                if document == document {
-                                    print("SUCCESS")
-                                }
-                            }
-                        }
- 
-                    */
                 
                 
                 if let user = user {
@@ -114,7 +98,11 @@ class LogInViewController: UIViewController {
                             else {
                                 //if user has a group then moves to homescreen straight
                                 self.moveToHomeScreen()
+                                
 
+                                
+                                //trial move to taskbar
+                                //self.moveToTaskBar()
                             }
                         }
                         else {
@@ -123,51 +111,7 @@ class LogInViewController: UIViewController {
                         }
                     }
                     
-                    
-                    /*
-                    
-                    if uid != "" {
-        
-                        print(uid)
-                        // change TESTDOC
-                        
-                        //
-                        
-                        let docRef = db.collection("users2").document(user.uid)
-                        docRef.getDocument {   (document,error) in
-                            if let document = document, document.exists {
-                                grpid = document.get("groupbelong") as! String
-                                print("groupid updated")
-                                print(grpid)
-                                
-                                if grpid == "nogroup" {
-                                    //if user has not created / joined group then
-                                    //user brought to the group page
-                                    self.moveToGroupPage()
-                                }
-                                else {
-                                    //if user has a group then moves to homescreen straight
-                                    self.moveToHomeScreen()
 
-                                }
-                            }
-                            else {
-                                //print error
-                                print("did not update grpid")
-                            }
-                        }
-                        
-                        
-                        
-                        //print(grpid + "here now")
-                        print(result!.user.uid)
-                        print("ERROR")
-                        
-                    }
-                ///
-                    
-                    */
-                    
                     
                 }
                 
@@ -192,6 +136,27 @@ class LogInViewController: UIViewController {
         
         self.view.window?.rootViewController = groupViewController
         self.view.window?.makeKeyAndVisible()
+    }
+    func moveToTaskBar(){
+
+        let tabViewController =
+            self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabViewController) as? NewTasksViewController
+        
+        self.view.window?.rootViewController = tabViewController
+        self.view.window?.makeKeyAndVisible()
+    }
+    func moveToHomeScreen2(){
+        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC2")
+            self.definesPresentationContext = true
+            newVC?.modalPresentationStyle = .overCurrentContext
+            self.present(newVC!, animated: true, completion: nil)
+        self.view.window?.rootViewController = newVC
+        self.view.window?.makeKeyAndVisible()
+    }
+    func moveToHomeScreen3() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeVC2") as! HomeViewController
+                self.present(newViewController, animated: true, completion: nil)
     }
     
 

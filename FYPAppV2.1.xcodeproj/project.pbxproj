@@ -24,6 +24,7 @@
 		D5608B1F25B673A2005DA21B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5608B1E25B673A2005DA21B /* GoogleService-Info.plist */; };
 		D5ADF93025B7B06300FA190E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADF92F25B7B06300FA190E /* Constants.swift */; };
 		D5ADF95025C0E07C00FA190E /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADF94F25C0E07C00FA190E /* GroupViewController.swift */; };
+		D5B1ABAD25CF00B8009318AA /* NewTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1ABAC25CF00B8009318AA /* NewTasksViewController.swift */; };
 		D5CF6EE525C35D8E009D4BC8 /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF6EE425C35D8E009D4BC8 /* JoinGroupViewController.swift */; };
 		D5CF6EEA25C3665D009D4BC8 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF6EE925C3665D009D4BC8 /* CreateGroupViewController.swift */; };
 		D994E2D91D8B5AB80FF62993 /* Pods_FYPAppV2_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B66F6B0631D126D2A17F8FD /* Pods_FYPAppV2_1.framework */; };
@@ -76,6 +77,7 @@
 		D5608B1E25B673A2005DA21B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5ADF92F25B7B06300FA190E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D5ADF94F25C0E07C00FA190E /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		D5B1ABAC25CF00B8009318AA /* NewTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTasksViewController.swift; sourceTree = "<group>"; };
 		D5CF6EE425C35D8E009D4BC8 /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
 		D5CF6EE925C3665D009D4BC8 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		F65F17FA4D16C19782CEF05D /* Pods-FYPAppV2.1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FYPAppV2.1Tests.debug.xcconfig"; path = "Target Support Files/Pods-FYPAppV2.1Tests/Pods-FYPAppV2.1Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,13 +193,8 @@
 		D5608B0E25B65611005DA21B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D5608AD025B65544005DA21B /* ViewController.swift */,
-				D5608B0425B655EB005DA21B /* LogInViewController.swift */,
-				D5608AFF25B655CA005DA21B /* SignUpViewController.swift */,
-				D5608B0925B65608005DA21B /* HomeViewController.swift */,
-				D5ADF94F25C0E07C00FA190E /* GroupViewController.swift */,
-				D5CF6EE425C35D8E009D4BC8 /* JoinGroupViewController.swift */,
-				D5CF6EE925C3665D009D4BC8 /* CreateGroupViewController.swift */,
+				D5B1ABAB25CF0095009318AA /* TabBar Controllers */,
+				D5B1ABAA25CF007C009318AA /* Auth controllers */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -209,6 +206,28 @@
 				D5ADF92F25B7B06300FA190E /* Constants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D5B1ABAA25CF007C009318AA /* Auth controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5608AD025B65544005DA21B /* ViewController.swift */,
+				D5608B0425B655EB005DA21B /* LogInViewController.swift */,
+				D5608AFF25B655CA005DA21B /* SignUpViewController.swift */,
+				D5608B0925B65608005DA21B /* HomeViewController.swift */,
+				D5ADF94F25C0E07C00FA190E /* GroupViewController.swift */,
+				D5CF6EE425C35D8E009D4BC8 /* JoinGroupViewController.swift */,
+				D5CF6EE925C3665D009D4BC8 /* CreateGroupViewController.swift */,
+			);
+			path = "Auth controllers";
+			sourceTree = "<group>";
+		};
+		D5B1ABAB25CF0095009318AA /* TabBar Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5B1ABAC25CF00B8009318AA /* NewTasksViewController.swift */,
+			);
+			path = "TabBar Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,6 +479,7 @@
 				D5608B0A25B65608005DA21B /* HomeViewController.swift in Sources */,
 				D5CF6EEA25C3665D009D4BC8 /* CreateGroupViewController.swift in Sources */,
 				D5CF6EE525C35D8E009D4BC8 /* JoinGroupViewController.swift in Sources */,
+				D5B1ABAD25CF00B8009318AA /* NewTasksViewController.swift in Sources */,
 				D5ADF93025B7B06300FA190E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

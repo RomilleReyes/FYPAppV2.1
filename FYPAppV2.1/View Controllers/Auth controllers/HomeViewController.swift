@@ -9,6 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    
+    @IBOutlet weak var FreeBTN: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,6 +20,8 @@ class HomeViewController: UIViewController {
     }
     
 
+    @IBAction func FreeBTNTapped(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
