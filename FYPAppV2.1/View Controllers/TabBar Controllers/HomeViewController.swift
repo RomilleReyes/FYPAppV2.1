@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 class HomeViewController: UIViewController {
 
     
     @IBOutlet weak var FreeBTN: UIButton!
+    @IBOutlet weak var BusyBTN: UIButton!
     
     
     override func viewDidLoad() {
@@ -21,7 +24,25 @@ class HomeViewController: UIViewController {
     
 
     @IBAction func FreeBTNTapped(_ sender: Any) {
+        //chnage user status to free
+        
+        let db = Firestore.firestore()
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        db.collection("users2").document(currentuid2).updateData([
+        "userstatus":"Available",
+        ])
     }
+    
+    @IBAction func BusyBTNTapped(_ sender: Any) {
+        //change user status to busy
+        let db = Firestore.firestore()
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        db.collection("users2").document(currentuid2).updateData([
+        "userstatus":"Busy",
+        ])
+        
+    }
+    
     /*
     // MARK: - Navigation
 

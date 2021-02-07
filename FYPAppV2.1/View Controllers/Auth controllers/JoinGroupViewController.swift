@@ -33,6 +33,8 @@ class JoinGroupViewController: UIViewController {
         Utilities.styleFilledButton(JoinGroupBTN)
     }
     
+    //count number of fields in database
+    //used to find out number of suers
     func countFields() -> Int  {
         let db = Firestore.firestore()
         let collectionRef = db.collection("usergroups")
