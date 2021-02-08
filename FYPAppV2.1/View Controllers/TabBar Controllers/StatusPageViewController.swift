@@ -12,6 +12,11 @@ import FirebaseAuth
 
 class StatusPageViewController: UIViewController {
     
+    @IBOutlet weak var User1Label: UILabel!
+    @IBOutlet weak var User1Status: UITextField!
+    
+    
+    
     let menu: DropDown = {
         let menu = DropDown()
         menu.dataSource = [
@@ -25,6 +30,8 @@ class StatusPageViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //for change status button
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
         
         //change position of button
@@ -65,19 +72,188 @@ class StatusPageViewController: UIViewController {
                 button.setTitleColor(.red, for: .normal)
                 button.setTitle(title, for: .normal)
             }
+            }
+        
+        
+        
+        
+        
+        
+            let db = Firestore.firestore()
+            let collectionRef = db.collection("groupmembers")
+            let currentuid2 = (Auth.auth().currentUser?.uid)!
+            
+            //get groupid by using uid and checking for group?
+
+            //testing this code outside function
+            var updatedgroupid = "not changed yet"
+            let docRef = db.collection("users2").document(currentuid2)
+            docRef.getDocument { (document,error) in
+                
+                //get specific field
+                //groupbelong
+                if let document = document {
+                    let property = document.get("groupbelong")
+                    updatedgroupid = property as! String
+                    print("This is group id here \(updatedgroupid)")
+                    
+                }
+                else {
+                    print("Document does not exist")
+                    //return
+                }
+            
+            //testing this code
+            
+            
+            print("this is group id after calling function \(updatedgroupid)")
+            
+            let documentRef = collectionRef.document(updatedgroupid)
+            var FIELDCOUNT = 0
+            
+            documentRef.getDocument(completion: { Snapshot, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                //counts number of members
+                FIELDCOUNT = (Snapshot?.data()?.count)!
+                print("this is the field count \(FIELDCOUNT)")
+            
+                let numOfMembers = FIELDCOUNT
+                print("this is number of members \(numOfMembers)")
+                
+               
+                
+        }
+            )
+                
+                
+                // get user groupcode
+                //check number of users
+                
+                //use groupmembers
+                //for loop
+                //run same times as number of members
+                //let numOfMembers = 3
+                //countMembers()
+                //for index in 1...numOfMembers{
+                //change label and text for each index
+                    
+                    
+                //}
+                
+                
+            }
+                /*
+                //get name of member1
+                print("This is the groupid before getting name: \(updatedgroupid)")
+                let docRef2 = db.collection("groupmembers").document(updatedgroupid)
+                docRef.getDocument { (document,error) in
+                    
+                    //get specific field
+                    //groupbelong
+                    if let document = document {
+                        let property = document.get("member1")
+                        var usersname = property as! String
+                        print("This is group id here \(usersname)")
+                        
+                        //change textlabel
+                            self.User1Label.text = usersname
+                    }
+                    else {
+                        print("Document does not exist")
+                        return
+                    }
+                
+               
+                
+            }
+                 */
+            
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    func countMembers(){
+        let db = Firestore.firestore()
+        let collectionRef = db.collection("groupmembers")
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        
+        //get groupid by using uid and checking for group?
+
+        //testing this code outside function
+        var updatedgroupid = "not changed yet"
+        let docRef = db.collection("users2").document(currentuid2)
+        docRef.getDocument { (document,error) in
+            
+            //get specific field
+            //groupbelong
+            if let document = document {
+                let property = document.get("groupbelong")
+                updatedgroupid = property as! String
+                print("This is group id here \(updatedgroupid)")
+                
+            }
+            else {
+                print("Document does not exist")
+                return
+            }
+        
+        //testing this code
+        
+        
+        print("this is group id after calling function \(updatedgroupid)")
+        
+        let documentRef = collectionRef.document(updatedgroupid)
+        var FIELDCOUNT = 0
+        
+        documentRef.getDocument(completion: { Snapshot, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            //counts number of members
+            FIELDCOUNT = (Snapshot?.data()?.count)!
+            print("this is the field count \(FIELDCOUNT)")
+        
+            let numOfMembers = FIELDCOUNT
+            print("this is number of members \(numOfMembers)")
+            
+            //return Int(numOfMembers)
+    }
+        )
         }
         
-        /*
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapStatusBTN))
-        gesture.numberOfTapsRequired = 1
-        gesture.numberOfTouchesRequired = 1
-        */
+        return
     }
-    /*
-    @objc func buttonAction(sender: UIButton!) {
-      print("Button tapped")
+    
+    func getgroupid() -> String{
+        let db = Firestore.firestore()
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        var updatedgroupid = "not changed yet"
+        let docRef = db.collection("users2").document(currentuid2)
+        docRef.getDocument { (document,error) in
+            
+            if let document = document {
+                let property = document.get("groupbelong")
+                updatedgroupid = property as! String
+                print("This is group id here \(updatedgroupid)")
+                
+            }
+            else {
+                print("Document does not exist")
+            }
+            
     }
-    */
+        return  updatedgroupid
+    }
+        
+   
     
     func updateStatus(UserStatus: String) {
         let db = Firestore.firestore()
@@ -86,6 +262,8 @@ class StatusPageViewController: UIViewController {
         "userstatus":UserStatus,
         ])
     }
+    
+    
     
     @objc func didTapStatusBTN(){
         menu.show()

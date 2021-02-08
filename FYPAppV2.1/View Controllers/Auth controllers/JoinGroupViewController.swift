@@ -24,6 +24,8 @@ class JoinGroupViewController: UIViewController {
         super.viewDidLoad()
 
         setUpElements()
+        
+        
     }
     
     func setUpElements(){
@@ -96,9 +98,20 @@ class JoinGroupViewController: UIViewController {
                     "groupbelong":groupid,
                     ])
                 
+                //update groupmembers
+                let memNumb = FIELDCOUNT + 1
+                db.collection("groupmembers").document(groupid!).updateData([
+                "member\(memNumb)":currentuid2,
+                ])
+                
+                // to access groupid
+               //call globalclass and set groupid
+                
             }
             
             )
+            
+            
             
             
             //move to home screen

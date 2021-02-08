@@ -121,7 +121,8 @@ class SignUpViewController: UIViewController {
                             print("error2")
                         }
                     }
-                    
+                    let groupid = global.accessgroupid()
+                    print("this is group ID: \(groupid)")
                     self.moveToGroupPage()
                     
                    

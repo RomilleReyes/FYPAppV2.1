@@ -64,6 +64,13 @@ class CreateGroupViewController: UIViewController {
                 "groupname":groupname,
             
             ])
+            
+            //create groupmembers database and add user
+            let groupmembers = db.collection("groupmembers")
+            
+            groupmembers.document(newUID).setData([
+                "member1":currentuid,
+            ])
         
             
             //add groupid to user database as well
@@ -78,6 +85,8 @@ class CreateGroupViewController: UIViewController {
                     print("Document succesfully updated")
                 }
             }
+            
+            
             //move to home screen
             self.moveToHomeScreen()
  
