@@ -29,6 +29,7 @@
 		D5CF6EE525C35D8E009D4BC8 /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF6EE425C35D8E009D4BC8 /* JoinGroupViewController.swift */; };
 		D5CF6EEA25C3665D009D4BC8 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF6EE925C3665D009D4BC8 /* CreateGroupViewController.swift */; };
 		D5D5F25025CF618200FB34EE /* StatusPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5F24F25CF618200FB34EE /* StatusPageViewController.swift */; };
+		D5E2B78125D1AEDB00BA3A01 /* NewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E2B78025D1AEDB00BA3A01 /* NewTask.swift */; };
 		D994E2D91D8B5AB80FF62993 /* Pods_FYPAppV2_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B66F6B0631D126D2A17F8FD /* Pods_FYPAppV2_1.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		D5CF6EE425C35D8E009D4BC8 /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
 		D5CF6EE925C3665D009D4BC8 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		D5D5F24F25CF618200FB34EE /* StatusPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPageViewController.swift; sourceTree = "<group>"; };
+		D5E2B78025D1AEDB00BA3A01 /* NewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTask.swift; sourceTree = "<group>"; };
 		F65F17FA4D16C19782CEF05D /* Pods-FYPAppV2.1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FYPAppV2.1Tests.debug.xcconfig"; path = "Target Support Files/Pods-FYPAppV2.1Tests/Pods-FYPAppV2.1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +211,7 @@
 				D5608B1525B666C7005DA21B /* Utilities.swift */,
 				D5ADF92F25B7B06300FA190E /* Constants.swift */,
 				D5AEBD9525D0644900F5D419 /* global.swift */,
+				D5E2B78025D1AEDB00BA3A01 /* NewTask.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				D5608B0A25B65608005DA21B /* HomeViewController.swift in Sources */,
 				D5CF6EEA25C3665D009D4BC8 /* CreateGroupViewController.swift in Sources */,
 				D5CF6EE525C35D8E009D4BC8 /* JoinGroupViewController.swift in Sources */,
+				D5E2B78125D1AEDB00BA3A01 /* NewTask.swift in Sources */,
 				D5B1ABAD25CF00B8009318AA /* NewTasksViewController.swift in Sources */,
 				D5ADF93025B7B06300FA190E /* Constants.swift in Sources */,
 			);

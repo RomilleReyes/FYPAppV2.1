@@ -499,7 +499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cq5-cn-jxF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6086" y="1540"/>
+            <point key="canvasLocation" x="6995.652173913044" y="1539.5089285714284"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JEK-rT-5a6">
@@ -533,7 +533,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NY7-yH-hXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8034.7826086956529" y="958.92857142857133"/>
+            <point key="canvasLocation" x="8944.927536231884" y="958.92857142857133"/>
         </scene>
         <!--Status-->
         <scene sceneID="6vh-vi-XFG">
@@ -598,7 +598,7 @@
             </objects>
             <point key="canvasLocation" x="4286.9565217391309" y="1539.5089285714284"/>
         </scene>
-        <!--New Tasks-->
+        <!--New Tasks View Controller-->
         <scene sceneID="LpG-uL-rnY">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="ALV-5u-5Rv" customClass="NewTasksViewController" customModule="FYPAppV2_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -607,7 +607,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dns-EB-plu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="v6X-bl-R9S">
@@ -616,6 +616,15 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v6X-bl-R9S" id="Fol-Rc-1oo">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoG-Ly-OiV">
+                                                    <rect key="frame" x="20" y="10" width="374" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -634,20 +643,21 @@
                             <constraint firstItem="itp-hc-d30" firstAttribute="trailing" secondItem="dns-EB-plu" secondAttribute="trailing" id="nY8-1L-WBj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="New Tasks" image="circle" catalog="system" id="nVz-sv-jcg">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" systemColor="systemRedColor"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="RmR-e5-VSA">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="hYf-4T-ylM">
+                            <connections>
+                                <action selector="composeTaskBTNTapped:" destination="ALV-5u-5Rv" id="P1W-eE-Rop"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="composeTaskBTN" destination="hYf-4T-ylM" id="RKV-jh-7OM"/>
                         <outlet property="tableView" destination="dns-EB-plu" id="W7a-qZ-gi6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwJ-Wn-F96" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5229" y="1540"/>
+            <point key="canvasLocation" x="6139.130434782609" y="1539.5089285714284"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="UPU-bH-gQ1">
@@ -661,7 +671,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="FIY-LC-jhm" kind="relationship" relationship="viewControllers" id="jUh-8g-844"/>
-                        <segue destination="ALV-5u-5Rv" kind="relationship" relationship="viewControllers" id="yqr-8v-vjh"/>
+                        <segue destination="4eb-lg-cb7" kind="relationship" relationship="viewControllers" id="yqr-8v-vjh"/>
                         <segue destination="dae-Jt-dP2" kind="relationship" relationship="viewControllers" id="PUt-ML-rmL"/>
                         <segue destination="KO5-Fj-i5y" kind="relationship" relationship="viewControllers" id="MaS-q4-PAu"/>
                     </connections>
@@ -687,7 +697,32 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qG-XY-3Vn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7238" y="959"/>
+            <point key="canvasLocation" x="8147.826086956522" y="958.92857142857133"/>
+        </scene>
+        <!--New Tasks-->
+        <scene sceneID="ehV-v9-GSg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4eb-lg-cb7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="New Tasks" image="circle" catalog="system" id="nVz-sv-jcg">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" systemColor="systemRedColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="344-7o-8P8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ALV-5u-5Rv" kind="relationship" relationship="rootViewController" id="6Xj-XN-Nfj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tSk-4o-zoF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5228.985507246377" y="1539.5089285714284"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -698,6 +733,7 @@
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
