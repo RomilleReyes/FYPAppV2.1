@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import DropDown
 //import FirebaseFirestore
 
 class NewTasksViewController: UIViewController {
@@ -17,6 +18,15 @@ class NewTasksViewController: UIViewController {
     //let db = Firestore.firestore()
     
     var taskArray = [Task]()
+    
+    let menu: DropDown = {
+        let menu = DropDown()
+        menu.dataSource = [
+            "Accept",
+            "Decline"
+        ]
+        return menu
+    }()
     
     @IBOutlet weak var composeTaskBTN: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -78,6 +88,16 @@ class NewTasksViewController: UIViewController {
         }
     }
     
+    func updateTaskStatus(UserStatus: String) {
+        let db = Firestore.firestore()
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        db.collection("users2").document(currentuid2).updateData([
+        "userstatus":UserStatus,
+        ])
+    }
+    
+    
+    
     @IBAction func composeTaskBTNTapped(_ sender: Any) {
         
         let composeAlert = UIAlertController(title: "New Task", message: "Enter description for the task", preferredStyle: .alert)
@@ -95,6 +115,8 @@ class NewTasksViewController: UIViewController {
         composeAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         composeAlert.addAction(UIAlertAction(title: "Send", style: .default, handler: { (action:UIAlertAction) in
+            
+            
             
             // ADDING TASK TO DATABASE
             if let name = composeAlert.textFields?.first?.text, let content = composeAlert.textFields?.last?.text {
@@ -188,8 +210,68 @@ class NewTasksViewController: UIViewController {
 extension NewTasksViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        menu.anchorView = cell
+        menu.selectionAction = { [self] index, title in
+            print("index \(index) and \(title)")
+            
+            if index == 0 {
+                //accepted
+                //change status to avaiable
+                //updateStatus(UserStatus: title) CHANGETO updateTaskStatus
+                
+                //move to completed task page
+            }
+            else if index == 1 {
+                //declined
+                //change status to declined?
+                //updateStatus(UserStatus: title) CHANGETO updateTaskStatus
+                
+                //move to completed task page
+            }
+            }
         print("you tapped me")
     }
+    
+    //when cell is tapped
+    //present anchorview 
+    //menu.anchorView = button
+    
+    //swipe left and right gesture from developers log blog
+    func tableView(_ tableView: UITableView,
+                    leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+     {
+         let closeAction = UIContextualAction(style: .normal, title:  "Decline", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                 print("OK, marked as Closed")
+            //this is swipe right
+            //update database that user has declined
+            //do this by adding user to the field?
+            //or uid:accepted // uid:declined
+                 success(true)
+             })
+             closeAction.image = UIImage(named: "tick")
+             closeAction.backgroundColor = .systemRed
+     
+             return UISwipeActionsConfiguration(actions: [closeAction])
+     
+     }
+     
+     func tableView(_ tableView: UITableView,
+                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+     {
+         let modifyAction = UIContextualAction(style: .normal, title:  "Accept", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+             print("Update action ...")
+            //this is swipe left
+            //update database that user has accepted
+             success(true)
+         })
+         modifyAction.image = UIImage(named: "hammer")
+         modifyAction.backgroundColor = .systemGreen
+     
+         return UISwipeActionsConfiguration(actions: [modifyAction])
+     }
+    
     
 }
 
