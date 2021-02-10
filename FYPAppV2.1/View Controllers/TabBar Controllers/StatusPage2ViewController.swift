@@ -461,8 +461,8 @@ extension StatusPage2ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let task = groupArray[indexPath.row]
-        cell.textLabel?.text = "\(task.firstname)"
-        
+        cell.textLabel?.text = "\(task.firstname) is \(task.userstatus)"
+        //cell.detailTextLabel?.text = "\(task.userstatus)"
         //change colour of cell according to status?
         
         if task.userstatus == "Available" {
@@ -506,6 +506,11 @@ extension StatusPage2ViewController: UITableViewDelegate{
             }
             }
         print("you tapped me")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 70 
     }
     }
 
