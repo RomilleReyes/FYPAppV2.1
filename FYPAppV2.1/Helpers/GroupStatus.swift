@@ -20,6 +20,7 @@ struct Grouper {
     var lastname:String
     var uid:String
     var userstatus:String
+    //var timeStamp:Date
         
     
     var dictionary2:[String:Any] {
@@ -30,6 +31,7 @@ struct Grouper {
             "lastname":lastname,
             "uid":uid,
             "userstatus":userstatus,
+            //"timeStamp": timeStamp
         ]
     }
 }
@@ -42,6 +44,7 @@ extension Grouper:DocumentSerialisable2 {
               let lastname = dictionary2["lastname"] as? String,
               let uid = dictionary2["uid"] as? String,
               let userstatus = dictionary2["userstatus"] as? String
+              //let timeStamp = dictionary2["timeStamp"] as? Date
         else{return nil}
         
         self.init(email: email, firstname: firstname, groupbelong: groupbelong, lastname: lastname, uid: uid, userstatus: userstatus)

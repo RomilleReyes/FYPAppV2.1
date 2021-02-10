@@ -14,10 +14,12 @@ import DropDown
 class NewTasksViewController: UIViewController {
     
     //@IBOutlet var tableView: UITableView!
-    var db:Firestore!
-    //let db = Firestore.firestore()
+    //var db:Firestore
+    var db = Firestore.firestore()
     
     var taskArray = [Task]()
+    
+    var updatedgroupid = ""
     
     let menu: DropDown = {
         let menu = DropDown()
@@ -34,6 +36,7 @@ class NewTasksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        preloadData()
 
         db = Firestore.firestore()
         // Do any additional setup after loading the view.
@@ -44,12 +47,37 @@ class NewTasksViewController: UIViewController {
         tableView.dataSource = self
         loadData()
         checkForUpdates()
+        
+        
+        /*
+        //trial to get groupid
+        let currentuid3 = (Auth.auth().currentUser?.uid)!
+        //var updatedgroupid = "not changed yet"
+        let docRef2 = db.collection("usergroups").document(currentuid3)
+        docRef2.getDocument { [self] (document,error) in
+            
+            if let document = document {
+                let property = document.get("groupname")
+                let groupername = property as! String
+                
+                
+                
+            }
+            else {
+                print("Document does not exist")
+            }
+            
+        }
+        //end of trial
+        */
+        
     }
     
     func loadData(){
         
         //let testingglobaluid = Globaluid.globuid
         print("entered load data function but not loading data")
+        
         db.collection("C5CFB030-C2CE-4025-9E30-C762509582FF").getDocuments() {
             querySnapshot, error in
             if let error = error {
@@ -61,6 +89,29 @@ class NewTasksViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+            }
+            
+        }
+    }
+    
+    func preloadData(){
+        //get groupid
+        
+        //let db = Firestore.firestore()
+        let currentuid3 = (Auth.auth().currentUser?.uid)!
+        //var updatedgroupid = "not changed yet"
+        let docRef2 = db.collection("users2").document(currentuid3)
+        docRef2.getDocument { [self] (document, error) in
+            
+            if let document = document {
+                let property = document.get("groupbelong")
+                let grouperid = property as! String
+                
+                updatedgroupid = grouperid
+                updategroupid(groupid: updatedgroupid)
+            }
+            else {
+                print("Document does not exist")
             }
             
         }
@@ -200,6 +251,14 @@ class NewTasksViewController: UIViewController {
     */
     struct Globaluid{
         static var globuid = String()
+    }
+    
+    func updategroupid(groupid: String) {
+        updatedgroupid = groupid
+    }
+    
+    func returnupdatedgroupid() -> String {
+        return updatedgroupid
     }
 }
 

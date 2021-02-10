@@ -70,6 +70,7 @@ class StatusPage2ViewController: UIViewController {
         
         loadData()
         //checkforupdates()
+        //checkForUpdatesV2()
         
         rightBarDropDown.anchorView = StatusBTN
               rightBarDropDown.dataSource = [
@@ -253,6 +254,7 @@ class StatusPage2ViewController: UIViewController {
                 updategroupid(groupid: updatedgroupid)
                 print("this is updatedgroupid in the func \(updatedgroupid)")
                 
+                /*
                 db.collection("users2").whereField("groupbelong", isEqualTo: updatedgroupid).addSnapshotListener{
                     querySnapshot, error in
                     
@@ -269,6 +271,31 @@ class StatusPage2ViewController: UIViewController {
                         }
                     }
                 }
+                */
+                //division for checking status update
+                db.collection("users2").whereField("timeStamp", isGreaterThan: Date()).addSnapshotListener{
+                    querySnapshot, error in
+                    
+                    guard let snapshot = querySnapshot else {return}
+                    
+                    snapshot.documentChanges.forEach{
+                        diff in
+                        
+                        if diff.type == .modified{
+                            /*
+                            self.groupArray.append(Grouper(dictionary2: diff.document.data())!)
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                            
+                            */
+                            loadData()
+                        }
+                    }
+                }
+                //ends here
+                
+                
             }
             else {
                 print("Document does not exist")
@@ -302,6 +329,32 @@ class StatusPage2ViewController: UIViewController {
         
     }
     
+    func checkForUpdatesV2() {
+        //db.collection("C5CFB030-C2CE-4025-9E30-C762509582FF").whereField("timeStamp", isGreaterThan: Date()).addSnapshotListener {
+        db.collection("users2").addSnapshotListener {
+            querySnapshot, error in
+            
+            guard let snapshot  = querySnapshot else {return}
+            
+            snapshot.documentChanges.forEach {
+                diff in
+                
+                //need to also check for .deleted tasks
+                if diff.type == .modified {
+                    //self.groupArray.append(Grouper(dictionary2: diff.document.data())!)
+                    DispatchQueue.main.async {
+                        print("Supposed to refresh data since added document now")
+                        self.tableView.reloadData()
+                        
+                        //self.tableView.reloadData(at: [indexPath], with: .fade)
+                        //to update cell
+                    }
+                }
+            }
+        }
+    }
+    
+    
     func updategroupid(groupid: String) {
         updatedgroupid = groupid
     }
@@ -312,6 +365,8 @@ class StatusPage2ViewController: UIViewController {
     
     
     @IBAction func StatusBTNTapped(_ sender: Any) {
+        
+        //self.loadView()
         rightBarDropDown.selectionAction = { (index: Int, item: String) in
             
                 // do action here
@@ -351,7 +406,7 @@ class StatusPage2ViewController: UIViewController {
                 ])
             }
             
-            
+            self.viewDidLoad()
             
         }
        
@@ -405,15 +460,27 @@ extension StatusPage2ViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
         let task = groupArray[indexPath.row]
-        
-        
         cell.textLabel?.text = "\(task.firstname)"
+        
+        //change colour of cell according to status?
+        
+        if task.userstatus == "Available" {
+            //cell.backgroundColor = .systemGreen
+            cell.contentView.backgroundColor = .systemGreen
+        }
+        else if task.userstatus == "Engaged" {
+            //cell.backgroundColor = .systemYellow
+            cell.contentView.backgroundColor = .systemYellow
+        }
+        else {
+            //cell.backgroundColor = .systemRed
+            cell.contentView.backgroundColor = .systemRed
+        }
         return cell
     }
 }
-
+//take this out? since we dont need the click
 extension StatusPage2ViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
