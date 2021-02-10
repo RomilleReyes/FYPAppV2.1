@@ -21,6 +21,7 @@ class StatusPageViewController: UIViewController {
         let menu = DropDown()
         menu.dataSource = [
             "Available",
+            
             "Busy"
         ]
         return menu

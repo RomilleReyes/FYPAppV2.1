@@ -77,6 +77,7 @@ class NewTasksViewController: UIViewController {
             snapshot.documentChanges.forEach {
                 diff in
                 
+                //need to also check for .deleted tasks
                 if diff.type == .added {
                     self.taskArray.append(Task(dictionary: diff.document.data())!)
                     DispatchQueue.main.async {
