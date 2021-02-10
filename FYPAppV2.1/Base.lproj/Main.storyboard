@@ -549,7 +549,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gQZ-9q-RTd">
-                                <rect key="frame" x="0.0" y="56" width="390" height="651"/>
+                                <rect key="frame" x="0.0" y="56" width="390" height="601"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="90" id="efL-ef-75z">
@@ -562,14 +562,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="groupcode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iX5-hk-Z3z" customClass="KGCopyableLabel" customModule="FYPAppV2_1" customModuleProvider="target">
+                                <rect key="frame" x="153.66666666666666" y="674" width="83" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uJs-qJ-J3R"/>
                         <color key="backgroundColor" red="1" green="0.70196078429999997" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gQZ-9q-RTd" firstAttribute="leading" secondItem="uJs-qJ-J3R" secondAttribute="leading" id="Gv4-By-XMk"/>
+                            <constraint firstItem="uJs-qJ-J3R" firstAttribute="bottom" secondItem="iX5-hk-Z3z" secondAttribute="bottom" constant="12" id="UaS-bl-vLt"/>
+                            <constraint firstItem="iX5-hk-Z3z" firstAttribute="centerX" secondItem="sfu-Ua-mLW" secondAttribute="centerX" id="Vo9-nF-H5N"/>
                             <constraint firstItem="gQZ-9q-RTd" firstAttribute="top" secondItem="uJs-qJ-J3R" secondAttribute="top" id="d45-i0-2dU"/>
-                            <constraint firstItem="uJs-qJ-J3R" firstAttribute="bottom" secondItem="gQZ-9q-RTd" secondAttribute="bottom" id="hRI-VQ-ZYO"/>
+                            <constraint firstItem="iX5-hk-Z3z" firstAttribute="top" secondItem="gQZ-9q-RTd" secondAttribute="bottom" constant="17" id="hf7-P0-6EN"/>
                             <constraint firstItem="gQZ-9q-RTd" firstAttribute="trailing" secondItem="uJs-qJ-J3R" secondAttribute="trailing" id="jjl-Dq-W7P"/>
+                            <constraint firstItem="uJs-qJ-J3R" firstAttribute="bottom" secondItem="gQZ-9q-RTd" secondAttribute="bottom" constant="50" id="jlN-HV-nrU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ram-ib-Btt">
@@ -581,6 +590,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="StatusBTN" destination="cBy-ck-0wi" id="yu2-a4-aq4"/>
+                        <outlet property="groupCodeLABEL" destination="iX5-hk-Z3z" id="H51-eq-nG3"/>
                         <outlet property="tableView" destination="gQZ-9q-RTd" id="ORE-PH-Rgw"/>
                     </connections>
                 </viewController>

@@ -16,7 +16,7 @@ class StatusPage2ViewController: UIViewController {
     
     var groupArray = [Grouper]()
     var taskArray = [Task]()
-    
+    var updatedgroupid: String = ""
     
     let menu: DropDown = {
         let menu = DropDown()
@@ -29,6 +29,7 @@ class StatusPage2ViewController: UIViewController {
     
     
     
+    @IBOutlet weak var groupCodeLABEL: KGCopyableLabel!
     //@IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var StatusBTN: UIBarButtonItem!
@@ -41,8 +42,34 @@ class StatusPage2ViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        /*
+        print("this is using the updategroupfunc\(updatedgroupid)")
+        //get groupid
+        
+        let db = Firestore.firestore()
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        //var updatedgroupid = "not changed yet"
+        let docRef = db.collection("users2").document(currentuid2)
+        docRef.getDocument { [self] (document,error) in
+            
+            if let document = document {
+                let property = document.get("groupbelong")
+                let updatedgroupid = property as! String
+                updategroupid(groupid: updatedgroupid)
+                print("this is updatedgroupid in the func \(updatedgroupid)")
+            }
+            else {
+                print("Document does not exist")
+            }
+            
+        }
+        //end of groupid
+        print("this is AFTER using the updategroupfunc\(updatedgroupid)")
+        */
+        
         loadData()
-        checkforupdates()
+        //checkforupdates()
         
         rightBarDropDown.anchorView = StatusBTN
               rightBarDropDown.dataSource = [
@@ -54,6 +81,7 @@ class StatusPage2ViewController: UIViewController {
         
         //set group code as variable here so it can be called later
         
+        /*
         //add group label to left side of navigation bar
         if let navigationBar = self.navigationController?.navigationBar {
             let leftFrame = CGRect(x: 20, y: 0, width: navigationBar.frame.width/2, height: navigationBar.frame.height)
@@ -63,11 +91,132 @@ class StatusPage2ViewController: UIViewController {
             
             navigationBar.addSubview(leftLabel)
         }
+        */
+        
+        //get groupid
+        let db = Firestore.firestore()
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        //var updatedgroupid = "not changed yet"
+        let docRef = db.collection("users2").document(currentuid2)
+        docRef.getDocument { [self] (document,error) in
+            if let document = document {
+                let property = document.get("groupbelong")
+                let updatedgroupid = property as! String
+                updategroupid(groupid: updatedgroupid)
+                print("this is updatedgroupid in the func \(updatedgroupid)")
+                
+                groupCodeLABEL.text = "GroupID: \(updatedgroupid)"
+                //groupCodeLABEL.intrinsicContentSize.width
+                groupCodeLABEL.font = groupCodeLABEL.font.withSize(12)
+                //groupCodeLABEL.frame = CGRect(x:  groupCodeLABEL.frame.origin.x, y: groupCodeLABEL.frame.origin.y, width: 100, height: groupCodeLABEL.frame.size.height)
+                
+                /*
+                //let property2 = document.get("")
+                
+                //add group label to left side of navigation bar
+                if let navigationBar = self.navigationController?.navigationBar {
+                    let leftFrame = CGRect(x: 20, y: 0, width: navigationBar.frame.width/1.40, height: navigationBar.frame.height)
+         
+                    let leftLabel = UILabel(frame: leftFrame)
+                    leftLabel.text = updatedgroupid
+                    leftLabel.font = leftLabel.font.withSize(11)
+                    navigationBar.addSubview(leftLabel)
+                }
+                */
+               
+            }
+            else {
+                print("Document does not exist")
+            }
+        }
+        //end of groupid
+     
+        
+        /*
+        //get groupid
+        
+        //let db = Firestore.firestore()
+        let currentuid3 = (Auth.auth().currentUser?.uid)!
+        //var updatedgroupid = "not changed yet"
+        let docRef2 = db.collection("usergroups").document(currentuid3)
+        docRef.getDocument { [self] (document,error) in
+            
+            if let document = document {
+                let property = document.get("groupname")
+                let groupername = property as! String
+                
+                //add group label to left side of navigation bar
+                if let navigationBar = self.navigationController?.navigationBar {
+                    let leftFrame = CGRect(x: 20, y: 0, width: navigationBar.frame.width/2, height: navigationBar.frame.height)
+         
+                    let leftLabel = UILabel(frame: leftFrame)
+                    leftLabel.text = groupername
+                    leftLabel.font = leftLabel.font.withSize(14)
+                    navigationBar.addSubview(leftLabel)
+                
+                
+            }
+            else {
+                print("Document does not exist")
+            }
+            
+        }
+        //end of groupid
+         
+         }
+        */
         
     }
     
+    
     func loadData(){
-        db.collection("users2").whereField("groupbelong", isEqualTo: "C5CFB030-C2CE-4025-9E30-C762509582FF").getDocuments() {
+        
+        
+        print("this is using the updategroupfunc\(updatedgroupid)")
+        //get groupid
+        
+        let db = Firestore.firestore()
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        //var updatedgroupid = "not changed yet"
+        let docRef = db.collection("users2").document(currentuid2)
+        docRef.getDocument { [self] (document,error) in
+            
+            if let document = document {
+                let property = document.get("groupbelong")
+                let updatedgroupid = property as! String
+                updategroupid(groupid: updatedgroupid)
+                print("this is updatedgroupid in the func \(updatedgroupid)")
+                
+                
+                
+                db.collection("users2").whereField("groupbelong", isEqualTo: updatedgroupid).getDocuments() {
+                    querySnapshot, error in
+                    if let error = error  {
+                        print("\(error.localizedDescription)")
+                    }
+                    else {
+                        print("suppsoed to print data in statusind")
+                        self.groupArray = querySnapshot!.documents.flatMap({Grouper(dictionary2: $0.data())})
+                        DispatchQueue.main.async{
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+                
+                
+            }
+            else {
+                print("Document does not exist")
+            }
+            
+        }
+        //end of groupid
+        print("this is AFTER using the updategroupfunc\(updatedgroupid)")
+        
+        
+        
+        /*
+        db.collection("users2").whereField("groupbelong", isEqualTo: returnupdatedgroupid()).getDocuments() {
             querySnapshot, error in
             if let error = error  {
                 print("\(error.localizedDescription)")
@@ -80,11 +229,57 @@ class StatusPage2ViewController: UIViewController {
                 }
             }
         }
+        
+        */
+        
+        
     }
     
     //will work for when a new user joins the group
     func checkforupdates() {
-        db.collection("users2").whereField("groupbelong", isEqualTo: "C5CFB030-C2CE-4025-9E30-C762509582FF").addSnapshotListener{
+        
+        print("this is using the updategroupfunc\(updatedgroupid)")
+        //get groupid
+        
+        let db = Firestore.firestore()
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        //var updatedgroupid = "not changed yet"
+        let docRef = db.collection("users2").document(currentuid2)
+        docRef.getDocument { [self] (document,error) in
+            
+            if let document = document {
+                let property = document.get("groupbelong")
+                let updatedgroupid = property as! String
+                updategroupid(groupid: updatedgroupid)
+                print("this is updatedgroupid in the func \(updatedgroupid)")
+                
+                db.collection("users2").whereField("groupbelong", isEqualTo: updatedgroupid).addSnapshotListener{
+                    querySnapshot, error in
+                    
+                    guard let snapshot = querySnapshot else {return}
+                    
+                    snapshot.documentChanges.forEach{
+                        diff in
+                        
+                        if diff.type == .added {
+                            self.groupArray.append(Grouper(dictionary2: diff.document.data())!)
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                print("Document does not exist")
+            }
+            
+        }
+        //end of groupid
+        print("this is AFTER using the updategroupfunc\(updatedgroupid)")
+        
+        /*
+        db.collection("users2").whereField("groupbelong", isEqualTo: returnupdatedgroupid()).addSnapshotListener{
             querySnapshot, error in
             
             guard let snapshot = querySnapshot else {return}
@@ -100,6 +295,19 @@ class StatusPage2ViewController: UIViewController {
                 }
             }
         }
+        
+        */
+        
+        
+        
+    }
+    
+    func updategroupid(groupid: String) {
+        updatedgroupid = groupid
+    }
+    
+    func returnupdatedgroupid() -> String {
+        return updatedgroupid
     }
     
     

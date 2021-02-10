@@ -73,10 +73,11 @@ class CreateGroupViewController: UIViewController {
             ])
         
             
-            //add groupid to user database as well
+            //add groupid and groupname to user database as well
             let currentuid2 = (Auth.auth().currentUser?.uid)!
             db.collection("users2").document(currentuid!).updateData([
-                "groupbelong": newUID
+                "groupbelong": newUID,
+                "groupname":groupname
             ]) { err in
                 if let err = err {
                     print("Error udpating document: \(err)")
