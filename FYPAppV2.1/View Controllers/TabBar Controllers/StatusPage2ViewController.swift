@@ -473,6 +473,9 @@ extension StatusPage2ViewController: UITableViewDataSource{
             //cell.backgroundColor = .systemYellow
             cell.contentView.backgroundColor = .systemYellow
         }
+        else if task.userstatus == "Away" {
+            cell.contentView.backgroundColor = .systemGray
+        }
         else {
             //cell.backgroundColor = .systemRed
             cell.contentView.backgroundColor = .systemRed
@@ -482,7 +485,7 @@ extension StatusPage2ViewController: UITableViewDataSource{
 }
 //take this out? since we dont need the click
 extension StatusPage2ViewController: UITableViewDelegate{
-    
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath)
@@ -507,7 +510,7 @@ extension StatusPage2ViewController: UITableViewDelegate{
             }
         print("you tapped me")
     }
-    
+    */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 70 

@@ -116,13 +116,20 @@
                                     <constraint firstItem="1Ir-iA-euk" firstAttribute="height" secondItem="Apa-97-hfv" secondAttribute="height" multiplier="0.75" id="fRU-NB-Clq"/>
                                 </constraints>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KnockKnockIcon" translatesAutoresizingMaskIntoConstraints="NO" id="wTR-2O-FOB">
+                                <rect key="frame" x="40" y="127.00000000000003" width="310" height="310.66666666666674"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.70196078429999997" green="0.8980392157" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.76015073060000005" green="0.9182641506" blue="0.99739986660000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pSg-8y-Bq6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="1vP-7m-v7B"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pSg-8y-Bq6" secondAttribute="bottom" constant="40" id="8td-Qz-dCE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pSg-8y-Bq6" secondAttribute="trailing" constant="40" id="EJh-Lc-EpG"/>
+                            <constraint firstItem="wTR-2O-FOB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="127" id="Lr7-Iu-mP6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wTR-2O-FOB" secondAttribute="trailing" constant="40" id="bJ5-oa-iL6"/>
+                            <constraint firstItem="wTR-2O-FOB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="bmn-8H-2v3"/>
+                            <constraint firstItem="pSg-8y-Bq6" firstAttribute="top" secondItem="wTR-2O-FOB" secondAttribute="bottom" constant="136.66999999999999" id="qdN-hX-doI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sbW-do-5pr"/>
@@ -133,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="923.1884057971015" y="88.392857142857139"/>
+            <point key="canvasLocation" x="923.07692307692309" y="88.151658767772503"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="Xcj-O5-sIe">
@@ -349,15 +356,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrz-or-fkB">
-                                <rect key="frame" x="157" y="268.5" width="100" height="20.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="g5N-Yx-ORC">
-                                <rect key="frame" x="116.33333333333333" y="352" width="157.33333333333337" height="86"/>
+                                <rect key="frame" x="116.33333333333331" y="352" width="157.33333333333337" height="86"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter group name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NP4-IR-sGo">
                                         <rect key="frame" x="0.0" y="0.0" width="157.33333333333334" height="34"/>
@@ -374,11 +374,16 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIT-45-OF7">
-                                <rect key="frame" x="8" y="323" width="374" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIT-45-OF7">
+                                <rect key="frame" x="174.33333333333334" y="330" width="41.333333333333343" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemPinkColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrz-or-fkB">
+                                <rect key="frame" x="118.66666666666669" y="149" width="152.66666666666663" height="28"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
+                                <color key="textColor" red="0.19803965904774867" green="0.7518654254951862" blue="0.25429009618932835" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -387,6 +392,10 @@
                         <constraints>
                             <constraint firstItem="g5N-Yx-ORC" firstAttribute="centerY" secondItem="tZI-ol-Pq7" secondAttribute="centerY" id="5xq-Hs-3jR"/>
                             <constraint firstItem="g5N-Yx-ORC" firstAttribute="centerX" secondItem="tZI-ol-Pq7" secondAttribute="centerX" id="EeX-SK-Gtc"/>
+                            <constraint firstItem="WIT-45-OF7" firstAttribute="top" secondItem="yrz-or-fkB" secondAttribute="bottom" constant="153" id="IRu-dL-1Lg"/>
+                            <constraint firstItem="yrz-or-fkB" firstAttribute="centerX" secondItem="tZI-ol-Pq7" secondAttribute="centerX" id="N5p-17-xV2"/>
+                            <constraint firstItem="yrz-or-fkB" firstAttribute="top" secondItem="5Ke-Iq-Dy8" secondAttribute="top" constant="149" id="dIR-ih-oEN"/>
+                            <constraint firstItem="WIT-45-OF7" firstAttribute="centerX" secondItem="tZI-ol-Pq7" secondAttribute="centerX" id="w1R-vF-358"/>
                         </constraints>
                     </view>
                     <connections>
@@ -407,13 +416,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JoinGroup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2T-K6-4OV">
-                                <rect key="frame" x="168" y="229" width="79" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zsX-uR-muc">
                                 <rect key="frame" x="118" y="352" width="154" height="86"/>
                                 <subviews>
@@ -432,11 +434,16 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpy-r8-adp">
-                                <rect key="frame" x="18" y="323" width="355" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpy-r8-adp">
+                                <rect key="frame" x="176.33333333333334" y="322.33333333333331" width="37.666666666666657" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemPinkColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2T-K6-4OV">
+                                <rect key="frame" x="125.66666666666669" y="149" width="138.66666666666663" height="30.333333333333343"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="26"/>
+                                <color key="textColor" red="0.19803965900000001" green="0.75186542550000002" blue="0.25429009619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -444,6 +451,10 @@
                         <color key="backgroundColor" red="0.74901960779999999" green="0.98823529409999999" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zsX-uR-muc" firstAttribute="centerY" secondItem="WaP-ed-ZBg" secondAttribute="centerY" id="5Re-gX-71u"/>
+                            <constraint firstItem="F2T-K6-4OV" firstAttribute="centerX" secondItem="WaP-ed-ZBg" secondAttribute="centerX" id="B4K-ma-mRB"/>
+                            <constraint firstItem="qpy-r8-adp" firstAttribute="centerX" secondItem="WaP-ed-ZBg" secondAttribute="centerX" id="IDI-0j-wmL"/>
+                            <constraint firstItem="F2T-K6-4OV" firstAttribute="top" secondItem="gUw-z8-4NH" secondAttribute="top" constant="149" id="Lc6-rv-MgO"/>
+                            <constraint firstItem="qpy-r8-adp" firstAttribute="top" secondItem="F2T-K6-4OV" secondAttribute="bottom" constant="143" id="QOU-5s-N4u"/>
                             <constraint firstItem="zsX-uR-muc" firstAttribute="centerX" secondItem="WaP-ed-ZBg" secondAttribute="centerX" id="tIG-rg-pua"/>
                         </constraints>
                     </view>
@@ -635,7 +646,6 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="itp-hc-d30"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                         <constraints>
                             <constraint firstItem="dns-EB-plu" firstAttribute="leading" secondItem="itp-hc-d30" secondAttribute="leading" id="CPf-cA-2FS"/>
                             <constraint firstItem="itp-hc-d30" firstAttribute="bottom" secondItem="dns-EB-plu" secondAttribute="bottom" id="Hxk-mH-8Q5"/>
@@ -748,6 +758,7 @@
         <segue reference="K4k-bb-JVs"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="KnockKnockIcon" width="1080" height="1080"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>

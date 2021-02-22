@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+//import FirebaseFirestoreSwift
 //by Kapil G from github
 //allows a UIlabel to be copied
 //for the group code

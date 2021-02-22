@@ -11,6 +11,7 @@ import FirebaseAuth
 import DropDown
 //import FirebaseFirestore
 
+
 class NewTasksViewController: UIViewController {
     
     //@IBOutlet var tableView: UITableView!
@@ -78,7 +79,7 @@ class NewTasksViewController: UIViewController {
         //let testingglobaluid = Globaluid.globuid
         print("entered load data function but not loading data")
         
-        db.collection("C5CFB030-C2CE-4025-9E30-C762509582FF").getDocuments() {
+        db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").getDocuments() {
             querySnapshot, error in
             if let error = error {
                 print("\(error.localizedDescription)")
@@ -120,7 +121,7 @@ class NewTasksViewController: UIViewController {
     //autocheck for updates
     func checkForUpdates() {
         //db.collection("C5CFB030-C2CE-4025-9E30-C762509582FF").whereField("timeStamp", isGreaterThan: Date()).addSnapshotListener {
-        db.collection("C5CFB030-C2CE-4025-9E30-C762509582FF").addSnapshotListener {
+        db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").addSnapshotListener {
             querySnapshot, error in
             
             guard let snapshot  = querySnapshot else {return}
@@ -143,10 +144,13 @@ class NewTasksViewController: UIViewController {
     func updateTaskStatus(UserStatus: String) {
         let db = Firestore.firestore()
         let currentuid2 = (Auth.auth().currentUser?.uid)!
+        
+        // change this to collection group code.document
         db.collection("users2").document(currentuid2).updateData([
         "userstatus":UserStatus,
         ])
     }
+    
     
     
     
@@ -172,9 +176,10 @@ class NewTasksViewController: UIViewController {
             
             // ADDING TASK TO DATABASE
             if let name = composeAlert.textFields?.first?.text, let content = composeAlert.textFields?.last?.text {
-                
-                let newTask = Task(name: name, content: content)
-                
+                let taskstatus2 = "Unassigned"
+                let documentID = "checking"
+                let newTask = Task(name: name, content: content, taskstatus2: taskstatus2, documentID: documentID)
+                //add documentid here
                 var ref:DocumentReference? = nil
                 
                 
@@ -197,19 +202,38 @@ class NewTasksViewController: UIViewController {
                         
                         
                         //trial
-                        
-                        ref = self.db.collection(updatedgroupid).addDocument(data: newTask.dictionary){
+                        //change group id
+                        let ref = self.db.collection(updatedgroupid)
+                        let ref2 = ref.addDocument(data: newTask.dictionary){
                             error in
                             
                             if let error = error {
                                 print("error adding document")
                                 
+                                
                             }
                             else {
-                                print("Document added with ID: \(ref!.documentID)")
+                                //print("Document added with ID: \(ref2.documentID)")
+                                // add
+                            }
+                           
+                            
+                        }
+                        print("Document added with ID: \(ref2.documentID)")
+
+                        ///update document and add as doc id
+                        
+                        ref.document("\(ref2.documentID)").updateData([
+                            "taskstatus2": "Unassigned",
+                            "documentID": "\(ref2.documentID)"
+                        ])
+                        { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            } else {
+                                print("Document successfully updated")
                             }
                         }
-
                         //trial end
                     }
                     else {
@@ -298,25 +322,59 @@ extension NewTasksViewController: UITableViewDelegate{
     //present anchorview 
     //menu.anchorView = button
     
+    
     //swipe left and right gesture from developers log blog
     func tableView(_ tableView: UITableView,
                     leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
      {
-         let closeAction = UIContextualAction(style: .normal, title:  "Decline", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-                 print("OK, marked as Closed")
+         let closeAction = UIContextualAction(style: .normal, title:  "Accept", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                 print("OK, marked as accepted")
             //this is swipe right
-            //update database that user has declined
-            //do this by adding user to the field?
-            //or uid:accepted // uid:declined
+            //update database that user has accepted
                  success(true)
              })
              closeAction.image = UIImage(named: "tick")
-             closeAction.backgroundColor = .systemRed
-     
+             closeAction.backgroundColor = .systemGreen
+
+            //tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        //taskArray.remove(at: indexPath.row)
+        //tableView.deleteRows(at: [indexPath], with: .fade)
+        //vr1
+        let task = taskArray[indexPath.row]
+        let taskdescription = task.content
+        let chosendocument = task.documentID
+        /*
+        for document in snapshot!.documents {
+
+          if document == document {
+           print(document.documentID)
+             }
+               }
+        */
+        //find documentid by using wherefield == (same as content and name)
+        //db.collection("BD2EF9C0-5BE1-4CF2-AD95-C904E1A87D09").whereField("content", isEqualTo: "\(taskdescription)")
+        //update field taskstatus: "Accepted"
+        //update and add uid to the task
+        
+        //delete task from this page
+        
+        /*
+         taskArray.remove(at: indexPath.row)
+         tableView.deleteRows(at: [indexPath], with: .fade)
+        */
+        
+        //ver2
+        //add to completed task
+        // move to completed task
+        //add also userid
+        //add also groupid
+        
+        
              return UISwipeActionsConfiguration(actions: [closeAction])
      
      }
-     
+    /*
+      //this is to swipe left
      func tableView(_ tableView: UITableView,
                     trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
      {
@@ -328,10 +386,30 @@ extension NewTasksViewController: UITableViewDelegate{
          })
          modifyAction.image = UIImage(named: "hammer")
          modifyAction.backgroundColor = .systemGreen
+        
+        // user accepted task
+        //add completed to database
+        
+        //updateTaskStatus(UserStatus: "Accepted")
      
          return UISwipeActionsConfiguration(actions: [modifyAction])
      }
+ */
     
+    //swipe left to delete
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+     
+                taskArray.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            
+
+            // change text to delete instead of decline
+            }
+    
+        }
+
+     
     
 }
 
