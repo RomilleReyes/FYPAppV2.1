@@ -33,6 +33,7 @@
 		D5E2B78125D1AEDB00BA3A01 /* NewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E2B78025D1AEDB00BA3A01 /* NewTask.swift */; };
 		D5E7AFC525D306F50032AEE0 /* StatusPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E7AFC425D306F50032AEE0 /* StatusPage2ViewController.swift */; };
 		D5E7AFCA25D31E9C0032AEE0 /* GroupStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E7AFC925D31E9C0032AEE0 /* GroupStatus.swift */; };
+		D5F2371E25E546E300E24812 /* AcceptedTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F2371D25E546E300E24812 /* AcceptedTasksViewController.swift */; };
 		D994E2D91D8B5AB80FF62993 /* Pods_FYPAppV2_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B66F6B0631D126D2A17F8FD /* Pods_FYPAppV2_1.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		D5E2B78025D1AEDB00BA3A01 /* NewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTask.swift; sourceTree = "<group>"; };
 		D5E7AFC425D306F50032AEE0 /* StatusPage2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPage2ViewController.swift; sourceTree = "<group>"; };
 		D5E7AFC925D31E9C0032AEE0 /* GroupStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStatus.swift; sourceTree = "<group>"; };
+		D5F2371D25E546E300E24812 /* AcceptedTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedTasksViewController.swift; sourceTree = "<group>"; };
 		F65F17FA4D16C19782CEF05D /* Pods-FYPAppV2.1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FYPAppV2.1Tests.debug.xcconfig"; path = "Target Support Files/Pods-FYPAppV2.1Tests/Pods-FYPAppV2.1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +246,7 @@
 				D5B1ABAC25CF00B8009318AA /* NewTasksViewController.swift */,
 				D5D5F24F25CF618200FB34EE /* StatusPageViewController.swift */,
 				D5E7AFC425D306F50032AEE0 /* StatusPage2ViewController.swift */,
+				D5F2371D25E546E300E24812 /* AcceptedTasksViewController.swift */,
 			);
 			path = "TabBar Controllers";
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				D5AEBD9625D0644900F5D419 /* global.swift in Sources */,
 				D5ADF95025C0E07C00FA190E /* GroupViewController.swift in Sources */,
 				D5608AD125B65544005DA21B /* ViewController.swift in Sources */,
+				D5F2371E25E546E300E24812 /* AcceptedTasksViewController.swift in Sources */,
 				D53E2A1925D36F5E00F3CBBF /* KGCopyableLabel.swift in Sources */,
 				D5E7AFCA25D31E9C0032AEE0 /* GroupStatus.swift in Sources */,
 				D5D5F25025CF618200FB34EE /* StatusPageViewController.swift in Sources */,

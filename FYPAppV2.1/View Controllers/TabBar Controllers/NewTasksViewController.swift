@@ -77,7 +77,7 @@ class NewTasksViewController: UIViewController {
     func loadData(){
         
         //let testingglobaluid = Globaluid.globuid
-        print("entered load data function but not loading data")
+        //print("entered load data function but not loading data")
         
         //db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").getDocuments() {
         db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").whereField("taskstatus2", isEqualTo: "Unassigned").getDocuments() {
