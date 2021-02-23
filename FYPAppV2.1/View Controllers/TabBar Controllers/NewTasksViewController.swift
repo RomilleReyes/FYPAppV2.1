@@ -79,7 +79,8 @@ class NewTasksViewController: UIViewController {
         //let testingglobaluid = Globaluid.globuid
         print("entered load data function but not loading data")
         
-        db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").getDocuments() {
+        //db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").getDocuments() {
+        db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").whereField("taskstatus2", isEqualTo: "Unassigned").getDocuments() {
             querySnapshot, error in
             if let error = error {
                 print("\(error.localizedDescription)")
@@ -121,7 +122,7 @@ class NewTasksViewController: UIViewController {
     //autocheck for updates
     func checkForUpdates() {
         //db.collection("C5CFB030-C2CE-4025-9E30-C762509582FF").whereField("timeStamp", isGreaterThan: Date()).addSnapshotListener {
-        db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").addSnapshotListener {
+        db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").whereField("taskstatus2", isEqualTo: "Unassigned").addSnapshotListener {
             querySnapshot, error in
             
             guard let snapshot  = querySnapshot else {return}
@@ -137,6 +138,8 @@ class NewTasksViewController: UIViewController {
                         self.tableView.reloadData()
                     }
                 }
+                
+                // add if diff.type ==.deleted??
             }
         }
     }
@@ -323,7 +326,7 @@ extension NewTasksViewController: UITableViewDelegate{
     //menu.anchorView = button
     
     
-    //swipe left and right gesture from developers log blog
+    //swipe left developers log blog
     func tableView(_ tableView: UITableView,
                     leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
      {
@@ -343,6 +346,26 @@ extension NewTasksViewController: UITableViewDelegate{
         let task = taskArray[indexPath.row]
         let taskdescription = task.content
         let chosendocument = task.documentID
+        
+        
+        let ref = self.db.collection(updatedgroupid).document("\(chosendocument)").updateData([
+            "taskstatus2":"Accepted"
+        
+        ])
+        { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+        taskArray.remove(at: indexPath.row)
+        //tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.deleteRows(at: [indexPath], with: .top)
+        //update taskstatus to Accepted
+        
+        //
         /*
         for document in snapshot!.documents {
 
