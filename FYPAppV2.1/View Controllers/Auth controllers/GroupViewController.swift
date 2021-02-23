@@ -26,7 +26,7 @@ class GroupViewController: UIViewController {
     }
     func setUpElements(){
         Utilities.styleFilledButton(JoinGroupBTN)
-        Utilities.styleFilledButton(CreateGroupBTN3)
+        Utilities.styleHollowButton(CreateGroupBTN3)
     }
     
     @IBAction func joinGroupBTNTapped(_ sender: Any) {
@@ -37,6 +37,8 @@ class GroupViewController: UIViewController {
     }
     @IBAction func createGroupBTN3Tapped(_ sender: Any) {
     }
+    
+   
 }
 
 // create animated view for join / create group

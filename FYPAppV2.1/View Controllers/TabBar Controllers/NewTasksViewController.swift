@@ -156,18 +156,17 @@ class NewTasksViewController: UIViewController {
     
     
     
-    
     @IBAction func composeTaskBTNTapped(_ sender: Any) {
         
         let composeAlert = UIAlertController(title: "New Task", message: "Enter description for the task", preferredStyle: .alert)
         
         
-        composeAlert.addTextField { (textField:UITextField) in
+        let nameEntered = composeAlert.addTextField { (textField:UITextField) in
             textField.placeholder = "Your name"
         }
         
         
-        composeAlert.addTextField { (textField:UITextField) in
+        let DescriptionEntered = composeAlert.addTextField { (textField:UITextField) in
             textField.placeholder = "Description"
         }
         
@@ -179,6 +178,13 @@ class NewTasksViewController: UIViewController {
             
             // ADDING TASK TO DATABASE
             if let name = composeAlert.textFields?.first?.text, let content = composeAlert.textFields?.last?.text {
+                
+                if name.isEmpty || content.isEmpty {
+                    
+                  print("field empty")
+                }
+                else {
+                
                 let taskstatus2 = "Unassigned"
                 let documentID = "checking"
                 let newTask = Task(name: name, content: content, taskstatus2: taskstatus2, documentID: documentID)
@@ -243,6 +249,8 @@ class NewTasksViewController: UIViewController {
                         print("Document does not exist")
                         return
                     }
+                    
+                }
                 }
                 
                 //add task to own group collection

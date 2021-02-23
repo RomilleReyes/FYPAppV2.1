@@ -27,6 +27,7 @@ class CreateGroupViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
 
     @IBAction func EnterGroupNameBTNTapped(_ sender: Any) {
         
@@ -99,7 +100,7 @@ class CreateGroupViewController: UIViewController {
         
         ErrorLabel.alpha = 0
         
-        Utilities.styleFilledButton(SubmitGroupBTN)
+        Utilities.styleHollowButton(SubmitGroupBTN)
     }
     
     //check fields if the data is correct and if it is then the method will return nil
