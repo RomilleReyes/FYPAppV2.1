@@ -19,6 +19,7 @@ struct Task {
     //var timeStamp:Date
     var taskstatus2:String
     var documentID:String
+    var acceptedBy:String
     
     var dictionary:[String:Any] {
         return [
@@ -27,6 +28,7 @@ struct Task {
             //"timeStamp":timeStamp
             "taskstatus2":taskstatus2,
             "documentID":documentID,
+            "acceptedBy":acceptedBy,
         ]
     }
 }
@@ -36,9 +38,10 @@ extension Task:DocumentSerialisable {
         guard let name = dictionary["name"] as? String,
               let taskstatus2 = dictionary["taskstatus2"] as? String,
               let documentID = dictionary["documentID"] as? String,
+              let acceptedBy = dictionary["acceptedBy"] as? String,
               let content = dictionary["content"] as? String else {return nil}
               //let timeStamp = dictionary["timeStamp"] as? Date else {return nil}
-        self.init(name: name, content: content, taskstatus2:taskstatus2, documentID:documentID)
+        self.init(name: name, content: content, taskstatus2:taskstatus2, documentID:documentID, acceptedBy:acceptedBy)
     }
 }
 

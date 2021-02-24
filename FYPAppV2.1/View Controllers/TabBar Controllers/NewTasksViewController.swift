@@ -22,6 +22,9 @@ class NewTasksViewController: UIViewController {
     
     var updatedgroupid = ""
     
+    var selectedCellIndexPath: NSIndexPath?
+    let selectedCellHeight: CGFloat = 88.0
+    
     let menu: DropDown = {
         let menu = DropDown()
         menu.dataSource = [
@@ -80,7 +83,7 @@ class NewTasksViewController: UIViewController {
         //print("entered load data function but not loading data")
         
         //db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").getDocuments() {
-        db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").whereField("taskstatus2", isEqualTo: "Unassigned").getDocuments() {
+        db.collection("D080F830-F22E-4E40-BDF4-7CC4B794A820").whereField("taskstatus2", isEqualTo: "Unassigned").getDocuments() {
             querySnapshot, error in
             if let error = error {
                 print("\(error.localizedDescription)")
@@ -122,7 +125,7 @@ class NewTasksViewController: UIViewController {
     //autocheck for updates
     func checkForUpdates() {
         //db.collection("C5CFB030-C2CE-4025-9E30-C762509582FF").whereField("timeStamp", isGreaterThan: Date()).addSnapshotListener {
-        db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").whereField("taskstatus2", isEqualTo: "Unassigned").addSnapshotListener {
+        db.collection("D080F830-F22E-4E40-BDF4-7CC4B794A820").whereField("taskstatus2", isEqualTo: "Unassigned").addSnapshotListener {
             querySnapshot, error in
             
             guard let snapshot  = querySnapshot else {return}
@@ -187,7 +190,8 @@ class NewTasksViewController: UIViewController {
                 
                 let taskstatus2 = "Unassigned"
                 let documentID = "checking"
-                let newTask = Task(name: name, content: content, taskstatus2: taskstatus2, documentID: documentID)
+                let acceptedBy = "NoOne"
+                    let newTask = Task(name: name, content: content, taskstatus2: taskstatus2, documentID: documentID, acceptedBy:acceptedBy)
                 //add documentid here
                 var ref:DocumentReference? = nil
                 
@@ -234,7 +238,9 @@ class NewTasksViewController: UIViewController {
                         
                         ref.document("\(ref2.documentID)").updateData([
                             "taskstatus2": "Unassigned",
-                            "documentID": "\(ref2.documentID)"
+                            "documentID": "\(ref2.documentID)",
+                            "acceptedBy": "\(currentuid2)"
+                            
                         ])
                         { err in
                             if let err = err {
@@ -304,10 +310,11 @@ class NewTasksViewController: UIViewController {
 
 extension NewTasksViewController: UITableViewDelegate{
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath)
-        menu.anchorView = cell
+        //let cell = tableView.cellForRow(at: indexPath)
+        //menu.anchorView = cell
+        /*
         menu.selectionAction = { [self] index, title in
             print("index \(index) and \(title)")
             
@@ -326,12 +333,39 @@ extension NewTasksViewController: UITableViewDelegate{
                 //move to completed task page
             }
             }
+        */
+        
+       //let selectedSortingRow = cell
+       // tableView.deselectRow(at: indexPath, animated: true)
+        /*
+        if selectedCellIndexPath != nil && selectedCellIndexPath == indexPath {
+                selectedCellIndexPath = nil
+            } else {
+                selectedCellIndexPath = indexPath
+            }
+        
+            tableView.beginUpdates()
+            tableView.endUpdates()
+
+            if selectedCellIndexPath != nil {
+                // This ensures, that the cell is fully visible once expanded
+                tableView.scrollToRow(at: indexPath as IndexPath, at: .none, animated: true)
+            }
+        
         print("you tapped me")
+        */
     }
     
-    //when cell is tapped
-    //present anchorview 
-    //menu.anchorView = button
+    /*
+    func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if selectedCellIndexPath == indexPath {
+                return selectedCellHeight
+            }
+        return 30
+    }
+    */
+    
+    
     
     
     //swipe left developers log blog

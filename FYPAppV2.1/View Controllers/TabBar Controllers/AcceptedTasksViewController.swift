@@ -34,7 +34,7 @@ class AcceptedTasksViewController: UIViewController {
     
     func loadData(){
         
-        db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").whereField("taskstatus2", isEqualTo: "Accepted").getDocuments() {
+        db.collection("D080F830-F22E-4E40-BDF4-7CC4B794A820").whereField("taskstatus2", isEqualTo: "Accepted").getDocuments() {
             querySnapshot, error in
             if let error = error {
                 print("\(error.localizedDescription)")
@@ -51,7 +51,7 @@ class AcceptedTasksViewController: UIViewController {
     }
     
     func checkUpdates(){
-        db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").whereField("taskstatus2", isEqualTo: "Accepted").addSnapshotListener {
+        db.collection("D080F830-F22E-4E40-BDF4-7CC4B794A820").whereField("taskstatus2", isEqualTo: "Accepted").addSnapshotListener {
             querySnapshot, error in
             
             guard let snapshot  = querySnapshot else {return}
@@ -104,6 +104,15 @@ extension AcceptedTasksViewController: UITableViewDataSource{
         cell.textLabel?.text = "\(task.content)"
         //add detail of who accepted it?
         cell.detailTextLabel?.text = "\(task.name)"
+        
+        //change colour of cells associated with the user
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        if task.acceptedBy == currentuid2 {
+            cell.contentView.backgroundColor = .systemGreen
+        }
+        
+        
+        
         return cell
     }
 }
