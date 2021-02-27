@@ -40,6 +40,7 @@ class NewTasksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showHint()
         preloadData()
 
         db = Firestore.firestore()
@@ -314,10 +315,11 @@ extension NewTasksViewController: UITableViewDelegate{
         
         //let cell = tableView.cellForRow(at: indexPath)
         //menu.anchorView = cell
-        /*
+        
         menu.selectionAction = { [self] index, title in
             print("index \(index) and \(title)")
             
+            /*
             if index == 0 {
                 //accepted
                 //change status to avaiable
@@ -332,8 +334,14 @@ extension NewTasksViewController: UITableViewDelegate{
                 
                 //move to completed task page
             }
+            */
+            let task = taskArray[indexPath.row]
+            let taskdescription = task.content
+            var alertchoice = showALERT(taskdescription: "\(taskdescription)")
+            
+            
             }
-        */
+        
         
        //let selectedSortingRow = cell
        // tableView.deselectRow(at: indexPath, animated: true)
@@ -355,6 +363,39 @@ extension NewTasksViewController: UITableViewDelegate{
         print("you tapped me")
         */
     }
+    //use this when adding
+    func showALERT(taskdescription: String){
+        //let task = taskArray[indexPath.row]
+        //var alertchoice = ""
+        let alert = UIAlertController(title: "New task accepted!", message: "Task: \(taskdescription)", preferredStyle: .alert)
+        
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { action in
+            print("tapped dismiss")
+            
+            //alertchoice = "Dismissed"
+        }))
+        
+        present(alert, animated: true)
+        //return alertchoice
+    }
+    
+    
+    func showHint(){
+        let alert = UIAlertController(title: "Task actions", message: "", preferredStyle: .alert)
+        
+        //add image here
+        let image = UIImage(named: "InstructionImg")
+        alert.addImage(image: image!)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { action in
+            print("tapped dismiss")
+            
+            //alertchoice = "Dismissed"
+        }))
+        
+        present(alert, animated: true)
+    }
     
     /*
     func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -368,7 +409,9 @@ extension NewTasksViewController: UITableViewDelegate{
     
     
     
-    //swipe left developers log blog
+    
+    
+    //swipe right developers log blog
     func tableView(_ tableView: UITableView,
                     leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
      {
@@ -389,6 +432,8 @@ extension NewTasksViewController: UITableViewDelegate{
         let taskdescription = task.content
         let chosendocument = task.documentID
         
+        let alertchoice = showALERT(taskdescription: "\(taskdescription)")
+        //print("This is alertchoice \(alertchoice)")
         
         let ref = self.db.collection(updatedgroupid).document("\(chosendocument)").updateData([
             "taskstatus2":"Accepted"
@@ -406,6 +451,11 @@ extension NewTasksViewController: UITableViewDelegate{
         //tableView.deleteRows(at: [indexPath], with: .fade)
         tableView.deleteRows(at: [indexPath], with: .top)
         //update taskstatus to Accepted
+        
+        
+        //let task = taskArray[indexPath.row]
+        //let taskdescription = task.content
+        //showALERT(taskdescription: "\(taskdescription)")
         
         //
         /*

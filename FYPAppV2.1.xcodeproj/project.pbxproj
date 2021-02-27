@@ -23,6 +23,8 @@
 		D5608B0A25B65608005DA21B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5608B0925B65608005DA21B /* HomeViewController.swift */; };
 		D5608B1625B666C7005DA21B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5608B1525B666C7005DA21B /* Utilities.swift */; };
 		D5608B1F25B673A2005DA21B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5608B1E25B673A2005DA21B /* GoogleService-Info.plist */; };
+		D5ADA1D325EAEF8C0054F27B /* AlertControllerWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA1D225EAEF8C0054F27B /* AlertControllerWithImage.swift */; };
+		D5ADA1D825EB09880054F27B /* UIImageAndResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA1D725EB09880054F27B /* UIImageAndResize.swift */; };
 		D5ADF93025B7B06300FA190E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADF92F25B7B06300FA190E /* Constants.swift */; };
 		D5ADF95025C0E07C00FA190E /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADF94F25C0E07C00FA190E /* GroupViewController.swift */; };
 		D5AEBD9625D0644900F5D419 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AEBD9525D0644900F5D419 /* global.swift */; };
@@ -83,6 +85,8 @@
 		D5608B0925B65608005DA21B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D5608B1525B666C7005DA21B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D5608B1E25B673A2005DA21B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D5ADA1D225EAEF8C0054F27B /* AlertControllerWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertControllerWithImage.swift; path = FYPAppV2.1/Assets.xcassets/AlertControllerWithImage.swift; sourceTree = SOURCE_ROOT; };
+		D5ADA1D725EB09880054F27B /* UIImageAndResize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageAndResize.swift; sourceTree = "<group>"; };
 		D5ADF92F25B7B06300FA190E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D5ADF94F25C0E07C00FA190E /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		D5AEBD9525D0644900F5D419 /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 				D5E2B78025D1AEDB00BA3A01 /* NewTask.swift */,
 				D5E7AFC925D31E9C0032AEE0 /* GroupStatus.swift */,
 				D53E2A1825D36F5E00F3CBBF /* KGCopyableLabel.swift */,
+				D5ADA1D225EAEF8C0054F27B /* AlertControllerWithImage.swift */,
+				D5ADA1D725EB09880054F27B /* UIImageAndResize.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -497,11 +503,13 @@
 				D53E2A1925D36F5E00F3CBBF /* KGCopyableLabel.swift in Sources */,
 				D5E7AFCA25D31E9C0032AEE0 /* GroupStatus.swift in Sources */,
 				D5D5F25025CF618200FB34EE /* StatusPageViewController.swift in Sources */,
+				D5ADA1D825EB09880054F27B /* UIImageAndResize.swift in Sources */,
 				D5608ACD25B65544005DA21B /* AppDelegate.swift in Sources */,
 				D5608B1625B666C7005DA21B /* Utilities.swift in Sources */,
 				D5608B0025B655CA005DA21B /* SignUpViewController.swift in Sources */,
 				D5608B0525B655EB005DA21B /* LogInViewController.swift in Sources */,
 				D5608ACF25B65544005DA21B /* SceneDelegate.swift in Sources */,
+				D5ADA1D325EAEF8C0054F27B /* AlertControllerWithImage.swift in Sources */,
 				D5608B0A25B65608005DA21B /* HomeViewController.swift in Sources */,
 				D5CF6EEA25C3665D009D4BC8 /* CreateGroupViewController.swift in Sources */,
 				D5CF6EE525C35D8E009D4BC8 /* JoinGroupViewController.swift in Sources */,
