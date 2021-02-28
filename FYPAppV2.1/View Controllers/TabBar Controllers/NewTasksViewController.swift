@@ -84,7 +84,7 @@ class NewTasksViewController: UIViewController {
         //print("entered load data function but not loading data")
         
         //db.collection("E86F83C7-FEB8-4549-9808-29078056ED53").getDocuments() {
-        db.collection("D080F830-F22E-4E40-BDF4-7CC4B794A820").whereField("taskstatus2", isEqualTo: "Unassigned").getDocuments() {
+        db.collection("13303EE4-17C5-4003-8DB8-A2CB1578E531").whereField("taskstatus2", isEqualTo: "Unassigned").getDocuments() {
             querySnapshot, error in
             if let error = error {
                 print("\(error.localizedDescription)")
@@ -126,7 +126,7 @@ class NewTasksViewController: UIViewController {
     //autocheck for updates
     func checkForUpdates() {
         //db.collection("C5CFB030-C2CE-4025-9E30-C762509582FF").whereField("timeStamp", isGreaterThan: Date()).addSnapshotListener {
-        db.collection("D080F830-F22E-4E40-BDF4-7CC4B794A820").whereField("taskstatus2", isEqualTo: "Unassigned").addSnapshotListener {
+        db.collection("13303EE4-17C5-4003-8DB8-A2CB1578E531").whereField("taskstatus2", isEqualTo: "Unassigned").addSnapshotListener {
             querySnapshot, error in
             
             guard let snapshot  = querySnapshot else {return}
@@ -431,12 +431,14 @@ extension NewTasksViewController: UITableViewDelegate{
         let task = taskArray[indexPath.row]
         let taskdescription = task.content
         let chosendocument = task.documentID
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
         
         let alertchoice = showALERT(taskdescription: "\(taskdescription)")
         //print("This is alertchoice \(alertchoice)")
         
         let ref = self.db.collection(updatedgroupid).document("\(chosendocument)").updateData([
-            "taskstatus2":"Accepted"
+            "taskstatus2":"Accepted",
+            "acceptedBy":"\(currentuid2)"
         
         ])
         { err in

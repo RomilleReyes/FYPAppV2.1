@@ -37,7 +37,7 @@ class AcceptedTasksViewController: UIViewController {
     
     func loadData(){
         
-        db.collection("D080F830-F22E-4E40-BDF4-7CC4B794A820").whereField("taskstatus2", isEqualTo: "Accepted").getDocuments() {
+        db.collection("13303EE4-17C5-4003-8DB8-A2CB1578E531").whereField("taskstatus2", isEqualTo: "Accepted").getDocuments() {
             querySnapshot, error in
             if let error = error {
                 print("\(error.localizedDescription)")
@@ -54,7 +54,7 @@ class AcceptedTasksViewController: UIViewController {
     }
     
     func checkUpdates(){
-        db.collection("D080F830-F22E-4E40-BDF4-7CC4B794A820").whereField("taskstatus2", isEqualTo: "Accepted").addSnapshotListener {
+        db.collection("13303EE4-17C5-4003-8DB8-A2CB1578E531").whereField("taskstatus2", isEqualTo: "Accepted").addSnapshotListener {
             querySnapshot, error in
             
             guard let snapshot  = querySnapshot else {return}
