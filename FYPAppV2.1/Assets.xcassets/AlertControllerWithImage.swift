@@ -23,7 +23,15 @@ extension UIAlertController{
         }
         
         let scaledSize = CGSize(width: imgSize.width * ratio, height: imgSize.height * ratio)
-        let resizedImage = image.imageWithSize(scaledSize)
+        var resizedImage = image.imageWithSize(scaledSize)
+        
+        //if portrait
+        if (imgSize.height > imgSize.width) {
+            let left = (maxSize.width - resizedImage.size.width) / 2
+            resizedImage = resizedImage.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: -left, bottom: 0, right: 0))
+        }
+        
+        
         
         let imgAction = UIAlertAction(title: "", style: .default, handler: nil)
         

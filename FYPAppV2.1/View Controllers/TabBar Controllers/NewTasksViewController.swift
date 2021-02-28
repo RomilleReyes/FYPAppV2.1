@@ -385,7 +385,7 @@ extension NewTasksViewController: UITableViewDelegate{
         let alert = UIAlertController(title: "Task actions", message: "", preferredStyle: .alert)
         
         //add image here
-        let image = UIImage(named: "InstructionImg")
+        let image = UIImage(named: "InstructionImg3")
         alert.addImage(image: image!)
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { action in
