@@ -25,6 +25,8 @@
 		D5608B1F25B673A2005DA21B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5608B1E25B673A2005DA21B /* GoogleService-Info.plist */; };
 		D5ADA1D325EAEF8C0054F27B /* AlertControllerWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA1D225EAEF8C0054F27B /* AlertControllerWithImage.swift */; };
 		D5ADA1D825EB09880054F27B /* UIImageAndResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA1D725EB09880054F27B /* UIImageAndResize.swift */; };
+		D5ADA1E225EB161E0054F27B /* AcceptedCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADA1E025EB161E0054F27B /* AcceptedCustomTableViewCell.swift */; };
+		D5ADA1E325EB161E0054F27B /* AcceptedCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5ADA1E125EB161E0054F27B /* AcceptedCustomTableViewCell.xib */; };
 		D5ADF93025B7B06300FA190E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADF92F25B7B06300FA190E /* Constants.swift */; };
 		D5ADF95025C0E07C00FA190E /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADF94F25C0E07C00FA190E /* GroupViewController.swift */; };
 		D5AEBD9625D0644900F5D419 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AEBD9525D0644900F5D419 /* global.swift */; };
@@ -87,6 +89,8 @@
 		D5608B1E25B673A2005DA21B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5ADA1D225EAEF8C0054F27B /* AlertControllerWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertControllerWithImage.swift; path = FYPAppV2.1/Assets.xcassets/AlertControllerWithImage.swift; sourceTree = SOURCE_ROOT; };
 		D5ADA1D725EB09880054F27B /* UIImageAndResize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageAndResize.swift; sourceTree = "<group>"; };
+		D5ADA1E025EB161E0054F27B /* AcceptedCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedCustomTableViewCell.swift; sourceTree = "<group>"; };
+		D5ADA1E125EB161E0054F27B /* AcceptedCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcceptedCustomTableViewCell.xib; sourceTree = "<group>"; };
 		D5ADF92F25B7B06300FA190E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D5ADF94F25C0E07C00FA190E /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		D5AEBD9525D0644900F5D419 /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 		D5608B1A25B666CE005DA21B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D5ADA1DC25EB15E30054F27B /* New Group */,
 				D5608B1525B666C7005DA21B /* Utilities.swift */,
 				D5ADF92F25B7B06300FA190E /* Constants.swift */,
 				D5AEBD9525D0644900F5D419 /* global.swift */,
@@ -228,8 +233,17 @@
 				D53E2A1825D36F5E00F3CBBF /* KGCopyableLabel.swift */,
 				D5ADA1D225EAEF8C0054F27B /* AlertControllerWithImage.swift */,
 				D5ADA1D725EB09880054F27B /* UIImageAndResize.swift */,
+				D5ADA1E025EB161E0054F27B /* AcceptedCustomTableViewCell.swift */,
+				D5ADA1E125EB161E0054F27B /* AcceptedCustomTableViewCell.xib */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D5ADA1DC25EB15E30054F27B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		D5B1ABAA25CF007C009318AA /* Auth controllers */ = {
@@ -366,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5608AD925B65546005DA21B /* LaunchScreen.storyboard in Resources */,
+				D5ADA1E325EB161E0054F27B /* AcceptedCustomTableViewCell.xib in Resources */,
 				D5608AD625B65546005DA21B /* Assets.xcassets in Resources */,
 				D5608B1F25B673A2005DA21B /* GoogleService-Info.plist in Resources */,
 				D5608AD425B65544005DA21B /* Main.storyboard in Resources */,
@@ -499,6 +514,7 @@
 				D5AEBD9625D0644900F5D419 /* global.swift in Sources */,
 				D5ADF95025C0E07C00FA190E /* GroupViewController.swift in Sources */,
 				D5608AD125B65544005DA21B /* ViewController.swift in Sources */,
+				D5ADA1E225EB161E0054F27B /* AcceptedCustomTableViewCell.swift in Sources */,
 				D5F2371E25E546E300E24812 /* AcceptedTasksViewController.swift in Sources */,
 				D53E2A1925D36F5E00F3CBBF /* KGCopyableLabel.swift in Sources */,
 				D5E7AFCA25D31E9C0032AEE0 /* GroupStatus.swift in Sources */,

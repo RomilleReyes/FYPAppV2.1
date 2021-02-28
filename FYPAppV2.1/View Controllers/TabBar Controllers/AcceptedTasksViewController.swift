@@ -20,6 +20,9 @@ class AcceptedTasksViewController: UIViewController {
         super.viewDidLoad()
 
         
+        //use custom cell
+        let nib = UINib(nibName: "AcceptedCustomTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "AcceptedCustomTableViewCell")
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -95,18 +98,43 @@ extension AcceptedTasksViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AcceptedCustomTableViewCell",
+                                                 for: indexPath) as! AcceptedCustomTableViewCell
         //swapping out data
         //insted of creating multiple cells
         //dequing is processs of using previous cell as template for next cell
         let task = taskArray[indexPath.row]
         
-        cell.textLabel?.text = "\(task.content)"
+        cell.taskLabel.text = "\(task.content)"
+        
+        //check users name using task.name
+        
+        let db = Firestore.firestore()
+        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        //var updatedgroupid = "not changed yet"
+        let docRef = db.collection("users2").document("\(task.acceptedBy)")
+        docRef.getDocument { [self] (document,error) in
+            if let document = document {
+                let property = document.get("firstname")
+                let taskTookOnBy = property as! String
+                //updategroupid(groupid: updatedgroupid)
+                //print("this is the name of the task taker \(taskTookOnBy)")
+               
+                cell.taskTookBy.text = "⇢ \(taskTookOnBy)"
+            }
+            else {
+                print("Document does not exist")
+            }
+        }
+        
+        //cell.taskTookBy.text = "Taken on by: \(task.name)"
+        
+        //cell.textLabel?.text = "\(task.content)"
         //add detail of who accepted it?
-        cell.detailTextLabel?.text = "\(task.name)"
+        //cell.detailTextLabel?.text = "\(task.name)"
         
         //change colour of cells associated with the user
-        let currentuid2 = (Auth.auth().currentUser?.uid)!
+        //let currentuid2 = (Auth.auth().currentUser?.uid)!
         if task.acceptedBy == currentuid2 {
             cell.contentView.backgroundColor = .systemGreen
         }
@@ -115,4 +143,9 @@ extension AcceptedTasksViewController: UITableViewDataSource{
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75.0;//Choose your custom row height
+    }
+    
 }
